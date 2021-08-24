@@ -61,7 +61,8 @@ function populateShows(shows: Show[]) {
        </div>
       `);
 
-    $showsList.append($show);  }
+    $showsList.append($show);  
+  }
 }
 
 
@@ -77,7 +78,7 @@ async function searchForShowAndDisplay() {
   populateShows(shows);
 }
 
-$searchForm.on("submit", async function (evt) {
+$searchForm.on("submit", async function (evt: JQuery.SubmitEvent) {
   evt.preventDefault();
   await searchForShowAndDisplay();
 });
@@ -106,18 +107,8 @@ async function getEpisodesOfShow(id: number): Promise<Episode[]> {
 
 function populateEpisodes(episodes: Episode[]): void { 
 
-  // debugger;
-
   const $episodesList = $("#episodesList")
   $episodesList.empty();
-
-  // episodes.forEach(episode =>  {
-  //   const $episode = $(
-  //       `<li>${episode.name} (season ${episode.season}, number ${episode.number})</li>
-  //     `);
-
-  //   $episodesList.append($episode);  
-  // }
 
   for (let episode of episodes) {
     const $episode = $(
@@ -130,7 +121,7 @@ function populateEpisodes(episodes: Episode[]): void {
   $episodesArea.show();
 }
 
-$showsList.on("click", "button", async function (evt) {
+$showsList.on("click", "button", async function (evt: JQuery.ClickEvent) {
   evt.preventDefault();
   const showId: string = ($(evt.target).closest("div[data-show-id]").attr("data-show-id") as string);
   const episodes = await getEpisodesOfShow(+showId);

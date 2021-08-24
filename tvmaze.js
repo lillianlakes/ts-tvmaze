@@ -12871,15 +12871,8 @@ function getEpisodesOfShow(id) {
 }
 /** Write a clear docstring for this function... */
 function populateEpisodes(episodes) {
-    // debugger;
     var $episodesList = $("#episodesList");
     $episodesList.empty();
-    // episodes.forEach(episode =>  {
-    //   const $episode = $(
-    //       `<li>${episode.name} (season ${episode.season}, number ${episode.number})</li>
-    //     `);
-    //   $episodesList.append($episode);  
-    // }
     for (var _i = 0, episodes_1 = episodes; _i < episodes_1.length; _i++) {
         var episode = episodes_1[_i];
         var $episode = $("<li>" + episode.name + " (season " + episode.season + ", number " + episode.number + ")</li>\n      ");
