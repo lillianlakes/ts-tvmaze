@@ -39,6 +39,7 @@ async function getShowsByTerm(term: string): Promise<Show[]> {
 /** Given list of shows, create markup for each and to DOM */
 
 function populateShows(shows: Show[]) {
+
   $showsList.empty();
 
   for (let show of shows) {
@@ -104,17 +105,29 @@ async function getEpisodesOfShow(id: number): Promise<Episode[]> {
 /** Write a clear docstring for this function... */
 
 function populateEpisodes(episodes: Episode[]): void { 
+
+  // debugger;
+
   const $episodesList = $("#episodesList")
   $episodesList.empty();
+
+  // episodes.forEach(episode =>  {
+  //   const $episode = $(
+  //       `<li>${episode.name} (season ${episode.season}, number ${episode.number})</li>
+  //     `);
+
+  //   $episodesList.append($episode);  
+  // }
 
   for (let episode of episodes) {
     const $episode = $(
         `<li>${episode.name} (season ${episode.season}, number ${episode.number})</li>
       `);
 
-    $episodesList.append($episode);  }
+    $episodesList.append($episode);  
+  }
   
-  $episodesList.show();
+  $episodesArea.show();
 }
 
 $showsList.on("click", "button", async function (evt) {
